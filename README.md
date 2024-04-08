@@ -1,4 +1,5 @@
 # Kubernetes Hybrid Cloud
+![image](https://github.com/j-barak/KubernetesHybridCloud/assets/165027028/012f275c-4afc-44b4-b5fd-826b2a8ca739)
 
 This repository contains scripts and configurations for setting up a Kubernetes hybrid cloud environment using AWS and VMware. With these scripts, you can deploy a Kubernetes cluster spanning both AWS EC2 instances and VMware virtual machines, providing a flexible and scalable infrastructure for your applications.
 
