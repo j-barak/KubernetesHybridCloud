@@ -1,0 +1,36 @@
+- name: Install Kubernetes Prerequisites
+  hosts: all
+  become: true
+  tasks:
+    - name: Install vim and git
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - vim
+        - git
+
+    - name: Clone repository
+      git:
+        repo: https://github.com/sandervanvugt/cka
+        dest: /tmp/cka
+        clone: yes
+
+    - name: Run setup-container.sh
+      shell: |
+        cd /tmp/cka
+        sudo ./setup-container.sh
+      args:
+        executable: /bin/bash
+
+    - name: Run setup-kubetools.sh
+      shell: |
+        cd /tmp/cka
+        sudo ./setup-kubetools.sh
+      args:
+        executable: /bin/bash
+
+    - name: Make .kube/ folder
+      shell: mkdir -p $HOME/.kube
+      args:
+        executable: /bin/bash
