@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     name: Deploy EC2 Instances
-    runs-on: self-hosted
+    runs-on: [ self-hosted, windows_10 ]
     steps:
       - name: checkout repo
         uses: actions/checkout@v2

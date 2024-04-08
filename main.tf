@@ -3,7 +3,6 @@ provider "aws" {
     access_key = secrets.AWS_ACCESS_KEY
     secret_key = secrets.AWS_SECRET_KEY
 }
-
 resource "aws_instance" "ec2" {
 	count = 2
     ami = "ami-0c1c30571d2dae5c9"
