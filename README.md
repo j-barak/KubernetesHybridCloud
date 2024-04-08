@@ -35,6 +35,6 @@ Before getting started, ensure you have the following prerequisites set up:
 3. Push the changes to your repository. GitHub Actions will automatically trigger and execute Terraform commands, connecting to AWS CLI.
 4. Once the deployment is complete, you can use the EC2 Instance Connect AWS service to connect to each worker and join them to the Minikube cluster.
 
-##!!! 
+## !!!
 Built solely by me. Watch our for small changes in PS syntax and the version of Hypervisor. 
-##!!!
+## !!!
