@@ -1,0 +1,36 @@
+name: Deploy EC2 for K8s
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy EC2 Instances
+    runs-on: windows-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+
+      # tf setup step is optional because its already setted up
+
+      - name: initialize
+        run: terraform init
+
+      - name: apply
+        run: terraform apply -auto-approve
+      
+      - name: install AWS CLI
+        uses: aws-actions/setup-aws-cli@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: eu-west-1
+      
+      - name: config AWS creds
+        run: |
+          mkdir -p ~/.aws
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY }}" >> ~/.aws/credentials
+          echo "aws_secret_access_key=${{ secrets.AWS_SECRET_KEY }}" >> ~/.aws/credentials
