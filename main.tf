@@ -15,6 +15,6 @@ resource "aws_instance" "ec2" {
     }
 
     provisioner "local-exec" {
-        command = "TIMEOUT /T 120 /NOBREAK ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook --private-key $HOME/k8s_test.pem -i ${aws_instance.ec2.public_ip}, playbook.yaml"
+        command = "TIMEOUT /T 120 /NOBREAK ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook --private-key $HOME/Desktop/project/k8s_test.pem -i ${aws_instance.ec2.public_ip}, playbook.yaml"
     }
 }
